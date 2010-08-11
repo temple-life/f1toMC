@@ -48,6 +48,10 @@ class ApplicationController < ActionController::Base
     session[:user_session]
   end
   
+  def load_account
+    @current_account ||= Account.where({:church_code => current_user_session.church_code}).first
+  end
+  
   protected
   
   def render_optional_error_file(status_code)

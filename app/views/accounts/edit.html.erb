@@ -1,0 +1,13 @@
+<div class="grid_16">
+    <%= form_for @current_account do |f| %>
+        <%= f.error_messages %>
+        <fieldset>
+            <%= f.label :mailchimp_key, "MailChimp API Key" %>
+            <%= f.text_field :mailchimp_key %>
+        </fieldset>
+        <p>
+            <%= submit_tag "Save changes" %>
+            <%= link_to "Cancel", home_path, :class => 'cancel' %>
+        </p>
+    <% end %>
+</div>

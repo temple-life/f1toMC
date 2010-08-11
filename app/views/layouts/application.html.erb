@@ -7,6 +7,15 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
+    <% unless flash[:notice].nil? %>
+        <div class="container_16">
+            <div class="grid_16">
+                <p class="flash_notice">
+                    <%= flash[:notice] %>
+                </p>
+            </div>
+        </div>
+    <% end %>
     <div class="container_16">
         <%= yield %>
     </div>

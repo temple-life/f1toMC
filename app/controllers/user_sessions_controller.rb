@@ -10,7 +10,7 @@ class UserSessionsController < ApplicationController
       render :new
     else
       @user_session = UserSession.new
-      @user_session.church_code = params[:church_code]
+      @user_session.church_code = params[:church_code].downcase
       
       site = @user_session.api_url
       oauth_callback = user_sessions_callback_url
@@ -57,6 +57,8 @@ class UserSessionsController < ApplicationController
     
     # don't need the request token anymore
     remove_request_token
+    
+    Account.find_or_create_by_church_code @user_session.church_code
     
     redirect_to root_path
   end

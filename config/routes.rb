@@ -1,9 +1,13 @@
 FtCampaigner::Application.routes.draw do |map|
+
   resources :user_sessions, :only => [:new, :create, :destroy]
   get "user_sessions/callback"
   match 'signin', :to => 'user_sessions#new'
   match 'signout', :to => 'user_sessions#destroy'
+  
+  resource :account, :only => [:edit, :update]
 
+  match 'home', :to => "home#index"
   root :to => 'home#index'
 
   # The priority is based upon order of creation:
