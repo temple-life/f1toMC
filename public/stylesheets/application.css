@@ -1,0 +1,20 @@
+/* 'Form Elements 
+---------------------------------------------------------------------------------------------------*/
+fieldset {
+  margin: 0 0 20px 0;
+}
+
+fieldset + fieldset {
+  margin-bottom: 10px;
+}
+
+fieldset label {
+  display: block;
+  margin: 0 0 5px 0;
+}
+
+legend {
+	font-weight: bold;
+	margin: 0 0 0 -5px;
+	padding: 0 2px;
+}

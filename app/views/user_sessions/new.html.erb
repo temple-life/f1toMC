@@ -1,0 +1,9 @@
+<div class="prefix_3 grid_6 suffix_3">
+    <%= form_tag(user_sessions_path, :method => :post, :class => 'signin_form') do %>
+        <fieldset>
+            <label for="church_code">Church code</label>
+            <input name="church_code" id="church_code" />
+            <%= submit_tag "Sign in" %>
+        </fieldset>
+    <% end %>
+</div>

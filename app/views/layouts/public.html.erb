@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fellowship One :: Campaigner</title>
+  <%= stylesheet_link_tag "reset.css", "text.css", "960.css", "application.css", :cache => true %>
+  <%= javascript_include_tag "jquery.js", "rails.js", "application.js", :cache => true %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+    <div class="container_12">
+        <%= yield %>
+        <div class="clear"></div>
+    </div>
+</body>
+</html>
