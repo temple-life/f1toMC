@@ -1,0 +1,141 @@
+/* `Misc Classes
+----------------------------------------------------------------------------------------------------*/
+
+.align_center {
+	text-align: center;
+}
+
+.align_right {
+	text-align: right;
+}
+
+.align_middle {
+	vertical-align: middle;
+}
+
+.cancel {
+	color: #c33;
+	padding: 0 1px;
+}
+
+.cancel:hover {
+	background: #c33;
+	color: #fff;
+}
+
+.float_left {
+	float: left;
+}
+
+.float_right {
+	float: right;
+}
+
+.mute {
+	color: #999;
+}
+
+.mute b {
+	color: #333;
+}
+
+.slug {
+	color: #ccc;
+}
+
+.full {
+	width: 100%;
+}
+
+/* `Gutters
+----------------------------------------------------------------------------------------------------*/
+
+.gutter_left {
+	margin-left: 20px;
+}
+
+.gutter_left_half {
+	margin-left: 10px;
+}
+
+.gutter_right {
+	margin-right: 20px;
+}
+
+.gutter_right_half {
+	margin-right: 10px;
+}
+
+.gutter_bottom {
+	margin-bottom: 20px;
+}
+
+.gutter_bottom_half {
+	margin-bottom: 10px;
+}
+
+.gutter_bottom_none {
+	margin-bottom: 0;
+}
+
+/* `Table Classes
+----------------------------------------------------------------------------------------------------*/
+
+.horiz td {
+	padding: 20px 0 0 20px;
+}
+
+.horiz tr:first-child td {
+	padding-top: 0;
+}
+
+.horiz tr td:first-child {
+	padding-left: 0;
+}
+
+/*
+	For use on <th> and/or <td>.
+*/
+.shrink {
+	white-space: nowrap;
+	width: 1%;
+}
+
+/* `Widths
+----------------------------------------------------------------------------------------------------*/
+
+.width_10 {
+	width: 10%;
+}
+
+.width_20 {
+	width: 20%;
+}
+
+.width_30 {
+	width: 30%;
+}
+
+.width_40 {
+	width: 40%;
+}
+
+.width_50 {
+	width: 50%;
+}
+
+.width_60 {
+	width: 60%;
+}
+
+.width_70 {
+	width: 70%;
+}
+
+.width_80 {
+	width: 80%;
+}
+
+.width_90 {
+	width: 90%;
+}

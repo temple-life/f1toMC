@@ -1,0 +1,385 @@
+/* `Basic HTML
+----------------------------------------------------------------------------------------------------*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: normal;
+	line-height: 1;
+}
+
+body {
+	background: #fff;
+	color: #333;
+}
+
+a {
+	color: #06c;
+}
+
+a:hover {
+	color: #09f;
+}
+
+small {
+	font-size: 11px;
+}
+
+h1 b,
+h2 b,
+h3 b,
+h4 b,
+h5 b,
+h6 b {
+	color: #f60;
+	font-weight: normal;
+}
+
+abbr {
+	border-bottom: 1px solid #f60;
+	cursor: default;
+}
+
+/* `Icons
+----------------------------------------------------------------------------------------------------*/
+
+.icon_alert {
+	background: url(../images/icon_alert.png) no-repeat;
+	display: inline-block;
+	vertical-align: top;
+	width: 16px;
+	height: 16px;
+}
+
+/* `Form Tweaks
+----------------------------------------------------------------------------------------------------*/
+
+.big,
+input.big {
+	font-size: 20px;
+}
+
+input.big {
+	height: auto;
+}
+
+fieldset label {
+	display: inline-block;
+	margin-bottom: 5px;
+}
+
+/* `Wrapper + Main
+----------------------------------------------------------------------------------------------------*/
+
+#wrapper {
+	min-height: 100%;
+}
+
+#main {
+	padding: 20px 0 60px;
+}
+
+/* `Header
+----------------------------------------------------------------------------------------------------*/
+
+#header,
+#header h1 {
+	background: #666;
+	line-height: 50px;
+}
+
+#header,
+#header a {
+	color: #fff;
+}
+
+#header a:hover {
+	background: #000;
+}
+
+#header h1 {
+	margin: 0;
+}
+
+/* `Footer
+----------------------------------------------------------------------------------------------------*/
+
+#footer {
+	background: #ddd;
+	font-size: 11px;
+	margin: -40px 0 0;
+	overflow: hidden;
+	line-height: 40px;
+	height: 40px;
+}
+
+#footer,
+#footer a {
+	color: #666;
+}
+
+#footer a:hover {
+	color: #000;
+}
+
+/* `Boxy Stuff
+----------------------------------------------------------------------------------------------------*/
+
+.box {
+	background: #f6f6f6 url(../images/1px_white.png) repeat-x;
+	border: 1px solid;
+	border-color: #eee #ddd #ccc;
+	overflow: hidden;
+	margin: 0 0 20px;
+	padding: 20px 20px 0;
+}
+
+.inset {
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f0f0f0), color-stop(1, #fff));
+	background: -moz-linear-gradient(top center, #f0f0f0 0%, #fff 100%);
+	border: 1px solid;
+	border-color: #ccc #ddd #eee;
+	overflow: hidden;
+	padding: 20px;
+}
+
+.inset b {
+	font-size: 25px;
+	font-weight: normal;
+}
+
+.pill {
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	border-radius: 15px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #eee), color-stop(1, #f6f6f6));
+	background: -moz-linear-gradient(top center, #eee 0%, #f6f6f6 100%);
+	color: #666;
+	display: inline-block;
+	font-size: 11px;
+	line-height: 1;
+	padding: 5px 10px 6px;
+}
+
+.figure {
+	border: 1px solid #fff;
+	display: block;
+	margin: -1px;
+	-moz-box-shadow: rgba(0, 0, 0, 0.5) 0 1px 3px;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 1px 3px;
+	box-shadow: rgba(0, 0, 0, 0.5) 0 1px 3px;
+}
+
+/* `Menu
+----------------------------------------------------------------------------------------------------*/
+
+.menu {
+	border: 1px solid #ddd;
+	border-bottom-width: 0;
+}
+
+.menu dt {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), color-stop(1, #eee));
+	background: -moz-linear-gradient(top center, #fff 0%, #eee 100%);
+	border-bottom: 1px solid #ddd;
+	font-weight: bold;
+	padding: 5px 12px;
+}
+
+.menu a,
+.menu dt,
+.menu dd {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.menu dd {
+	border-bottom: 1px solid #ddd;
+	padding: 5px 10px;
+}
+
+.menu a {
+	border: 1px solid #fff;
+	display: block;
+	margin: -5px -10px;
+	padding: 5px 10px;
+	text-decoration: none;
+}
+
+.menu a:hover {
+	background: #ff9;
+	color: #000;
+}
+
+.menu a:active {
+	padding-top: 6px;
+	padding-bottom: 4px;
+}
+
+.menu .active a {
+	background: #693;
+	color: #fff;
+}
+
+.menu b {
+	text-decoration: underline;
+}
+
+/* `Grid Table
+----------------------------------------------------------------------------------------------------*/
+
+.grid {
+	border: 1px solid #ddd;
+	width: 100%;
+}
+
+.grid th,
+.grid td {
+	padding: 5px 10px;
+}
+
+.grid thead th {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), color-stop(1, #eee));
+	background: -moz-linear-gradient(top center, #fff 0%, #eee 100%);
+	border-bottom: 1px solid #ddd;
+	font-weight: bold;
+	text-shadow: #fff 0 1px 1px;
+}
+
+.grid tbody tr {
+	border-top: 1px solid #eee;
+}
+
+.grid tbody > tr:nth-child(even) {
+	background-color: #f6f6f6;
+}
+
+.row_inactive {
+	background-image: url(../images/row_inactive.png);
+	background-position: center center;
+	color: #c99;
+}
+
+/* `Remove Button
+----------------------------------------------------------------------------------------------------*/
+
+.remove {
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	-moz-box-shadow: #fff 0 1px 0;
+	-webkit-box-shadow: #fff 0 1px 0;
+	box-shadow: #fff 0 1px 0;
+	/*
+		Pre-load background image for row_inactive.
+	*/
+	background: #aaa url(../images/row_inactive.png) no-repeat -99999px -99999px;
+	color: #fff;
+	display: inline-block;
+	font: 10px/1 Verdana, sans-serif;
+	overflow: hidden;
+	padding: 3px 0 4px;
+	text-align: center;
+	text-decoration: none;
+	vertical-align: middle;
+	width: 55px;
+}
+
+.remove:hover {
+	background: #c33;
+	color: #fff;
+}
+
+.remove_alt:hover {
+	background: #000;
+}
+
+/* `Pagination
+----------------------------------------------------------------------------------------------------*/
+
+.grid + .pager,
+.pager + .grid {
+	margin-top: -21px;
+}
+
+.pager,
+.pager li {
+	list-style: none;
+	margin-left: 0;
+}
+
+.pager {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), color-stop(1, #eee));
+	background: -moz-linear-gradient(top center, #fff 0%, #eee 100%);
+	border: 1px solid #ddd;
+	color: #999;
+	font-size: 11px;
+	overflow: hidden;
+}
+
+.pager li {
+	border-right: 1px solid #ddd;
+	float: left;
+	padding: 5px 10px;
+}
+
+.pager .float_right {
+	background: url(../images/1px_white.png) repeat-y;
+	border-left: 1px solid #ddd;
+	border-right: 0;
+	float: right;
+}
+
+.pager a {
+	display: block;
+	margin: -5px -10px;
+	padding: 5px 10px;
+}
+
+.pager a:active {
+	padding-top: 6px;
+	padding-bottom: 4px;
+}
+
+/* `Tooltip
+----------------------------------------------------------------------------------------------------*/
+
+#tooltip,
+#tooltip_inner {
+	border: 1px solid;
+}
+
+#tooltip {
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	-moz-box-shadow: rgba(0, 0, 0, 0.5) 0 1px 3px;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 1px 3px;
+	box-shadow: rgba(0, 0, 0, 0.5) 0 1px 3px;
+	background: #fff;
+	border-color: #666;
+	display: none;
+	font-size: 11px;
+	padding: 1px;
+	position: absolute;
+	left: -9999px;
+	z-index: 9999;
+}
+
+#tooltip_inner {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	background: #f9f9f9;
+	border-color: #ccc;
+	color: #000;
+	padding: 5px 10px;
+	white-space: nowrap;
+}
