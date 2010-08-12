@@ -1,0 +1,46 @@
+<% if people.length > 0 %>
+    <table>
+        <tr>
+            <th>
+                Last
+            </th>
+            <th>
+                First
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+                Phone
+            </th>
+            <th>&nbsp;</th>
+        </tr>
+        <% people.each do |person| %>
+            <tr>
+                <td>
+                    <%= person.last_name %>
+                </td>
+                <td>
+                    <%= person.first_name %>
+                </td>
+                <td>
+                    <%= person.email %>
+                </td>
+                <td>
+                    <%= person.status %>
+                </td>
+                <td>
+                    <%= person.phone %>
+                </td>
+                <td>Delete</td>
+            </tr>
+        <% end %>
+    </table>
+<% else %>
+    <p>
+        <em>No people were found with that attribute.</em>
+    </p>
+<% end %>

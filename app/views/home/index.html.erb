@@ -1,5 +1,20 @@
 <div class="grid_16">
     <h1>Home#index</h1>
     <p>Find me in app/views/home/index.html.erb</p>
+    <% if !@current_account.mailchimp_key.blank? %>
+    <ul>
+        <li>
+            <%= link_to "Begin a new synchronization", synchronize_new_step_1_path %>
+        </li>
+        <li>
+            <a href="#">View MailChimp lists</a>
+        </li>
+    </ul>
+    <% else %>
+        <p>
+            Before you begin, we need your MailChimp API key.
+            <%= link_to "Enter your MailChimp API key", edit_account_path %>
+        </p>
+    <% end %>
 </div>
 <div class="clear"></div>

@@ -1,0 +1,2 @@
+<option value="">--</option>
+<%= options_for_select(person_attributes.map{ |attribute| [attribute.name, attribute.id.to_s] }, params[:person_attribute_id]) %>

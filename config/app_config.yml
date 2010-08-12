@@ -1,6 +1,6 @@
 development:
   fellowshipone_people_realm: "/people/"
-  fellowshipone_api_url: "https://:church_code.staging.fellowshiponeapi.com/v1"
+  fellowshipone_api_url: "https://:church_code.fellowshiponeapi.com/v1/"
   fellowshipone_api_key: "16"
   fellowshipone_api_secret: "16f471d7-308a-4378-abee-86e0cec8ef4c"
 

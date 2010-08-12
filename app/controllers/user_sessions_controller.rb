@@ -18,10 +18,10 @@ class UserSessionsController < ApplicationController
       secret = APP_CONFIG["fellowshipone_api_secret"]
        
       @consumer = OAuth::Consumer.new(key, secret, {
-        :site => site + "/",
-        :request_token_url => "#{site}/Tokens/RequestToken",
-        :authorize_url => "#{site}/PortalUser/Login",
-        :access_token_url => "#{site}/Tokens/AccessToken",
+        :site => site,
+        :request_token_url => "#{site}Tokens/RequestToken",
+        :authorize_url => "#{site}PortalUser/Login",
+        :access_token_url => "#{site}Tokens/AccessToken",
         :oauth_callback => oauth_callback
       })
 
