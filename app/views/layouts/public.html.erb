@@ -1,15 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Fellowship One :: Campaigner</title>
-  <%= stylesheet_link_tag "reset.css", "text.css", "960.css", "application.css", :cache => true %>
-  <%= javascript_include_tag "jquery.js", "rails.js", "application.js", :cache => true %>
-  <%= csrf_meta_tag %>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />	
+<title>FT Campaigner</title>
+<%= stylesheet_link_tag "html.css", "960.css", "text.css", "form.css", "util.css", "application.css", :cache => true %>
+<%= javascript_include_tag "jquery.js", "rails.js", "application.js", :cache => true %>
+<%= csrf_meta_tag %>
 </head>
 <body>
-    <div class="container_12">
-        <%= yield %>
-        <div class="clear"></div>
-    </div>
+	<div id="wrapper">
+		<div id="header">
+			<div class="container_16">
+				<div class="grid_16 align_center">
+					<h1>
+						FT Campaigner
+					</h1>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div id="main">
+			<div class="container_16">
+				<%= yield %>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		<div class="container_16">
+			<div class="grid_8">
+				&copy; <%= Time.now.strftime("%Y") %> <a href="http://www.fellowshiptech.com/" target="_blank">Fellowship Technologies, L.P.</a> All rights reserved.
+			</div>
+			<div class="grid_8 align_right">
+				<a href="http://mailchimp.com/">MailChimp</a> is a trademark of <a href="http://rocketsciencegroup.com/">The Rocket Science Group</a>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
 </body>
 </html>

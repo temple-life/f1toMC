@@ -1,20 +1,50 @@
 <div class="grid_16">
-    <h1>Home#index</h1>
-    <p>Find me in app/views/home/index.html.erb</p>
+    <h2>
+		Dashboard
+	</h2>
+	<hr />
+</div>
+<div class="clear"></div>
+<div class="grid_8">
+	<div class="box equalize_1">
     <% if !@current_account.mailchimp_key.blank? %>
-    <ul>
-        <li>
-            <%= link_to "Begin a new synchronization", synchronize_new_step_1_path %>
-        </li>
-        <li>
-            <a href="#">View MailChimp lists</a>
-        </li>
-    </ul>
+		<h3>
+			Whatcha wanna do?
+		</h3>
+		<p>
+			Chose one of the following options...
+		</p>
+    	<ul>
+	        <li>
+	            <%= link_to "Begin a new synchronization", synchronize_new_step_1_path %>
+	        </li>
+	        <li>
+	            <a href="#">View MailChimp lists</a>
+	        </li>
+	    </ul>
     <% else %>
+		<h3>
+			Let's get started...
+		</h3>
+		<p>
+			Before you begin, we need your MailChimp API key.
+		</p>
         <p>
-            Before you begin, we need your MailChimp API key.
             <%= link_to "Enter your MailChimp API key", edit_account_path %>
         </p>
     <% end %>
+	</div>
 </div>
-<div class="clear"></div>
+<div class="grid_8">
+	<div class="box equalize_1">
+		<h3>
+			Hello there!
+		</h3>
+		<p>
+			Welcome to the Fellowship Technologies <em>FT Campaigner</em> app.
+		</p>
+		<p>
+			By using this application, you can keep your Fellowship One and MailChimp lists in sync. This helps to cut down on the headaches of manually adding, maintaining, and pruning lists of individuals.
+		</p>
+	</div>
+</div>

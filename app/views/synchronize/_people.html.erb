@@ -1,50 +1,77 @@
 <% if people.length > 0 %>
+	<p>
+		<strong>Note:</strong> The following people will be added, unless you exclude them via the <em>Remove</em> button.
+	</p>
     <table class="grid">
-        <tr>
-            <th>
-                Last
-            </th>
-            <th>
-                First
-            </th>
-            <th>
-                Email
-            </th>
-            <th>
-                Status &gt; Sub status
-            </th>
-            <th>
-                Phone
-            </th>
-            <th>&nbsp;</th>
-        </tr>
-        <% people.each do |person| %>
-            <tr>
-                <td>
-                    <%= person.last_name %>
-                    <input type="hidden" name="subscribers[<%= person.email %>][last_name]" value="<%= person.last_name %>" />
-                    <input type="hidden" name="subscribers[<%= person.email %>][id]" value="<%= person.id %>" />
-                </td>
-                <td>
-                    <%= person.casual_name %>
-                    <input type="hidden" name="subscribers[<%= person.email %>][first_name]" value="<%= person.casual_name %>" />
-                </td>
-                <td>
-                    <%= person.email %>
-                </td>
-                <td>
-                    <%= person.status %>
-                    <%= " > #{person.sub_status}" unless person.sub_status.nil? %>
-                </td>
-                <td>
-                    <%= person.phone %>
-                </td>
-                <td>Delete</td>
-            </tr>
-        <% end %>
+		<thead>
+        	<tr>
+	            <th>
+	                Last
+	            </th>
+	            <th>
+	                First
+	            </th>
+	            <th>
+	                Email
+	            </th>
+	            <th>
+	                Status &gt; Sub status
+	            </th>
+	            <th>
+	                Phone
+	            </th>
+	            <th class="shrink">
+					&nbsp;
+				</th>
+	        </tr>
+		</thead>
+		<tbody>
+    	    <% people.each do |person| %>
+	            <tr>
+	                <td>
+	                    <%= person.last_name %>
+	                    <input type="hidden" name="subscribers[<%= person.email %>][last_name]" value="<%= person.last_name %>" />
+	                    <input type="hidden" name="subscribers[<%= person.email %>][id]" value="<%= person.id %>" />
+	                </td>
+	                <td>
+	                    <%= person.casual_name %>
+	                    <input type="hidden" name="subscribers[<%= person.email %>][first_name]" value="<%= person.casual_name %>" />
+	                </td>
+	                <td>
+						<% unless person.email.nil? %>
+	                    	<%= person.email %>
+						<% else %>
+							<%= html_slug %>
+						<% end %>
+	                </td>
+	                <td>
+	                    <% unless person.status.nil? %>
+							<%= person.status %>
+							<%= " > #{person.sub_status}" unless person.sub_status.nil? %>
+						<% else %>
+							<%= html_slug %>
+						<% end %>
+	                </td>
+	                <td>
+						<% unless person.phone.nil? %>
+	                    	<%= person.phone %>
+						<% else %>
+							<%= html_slug %>
+						<% end %>
+	                </td>
+	                <td class="shrink">
+						<a href="#" class="remove">Remove</a>
+					</td>
+	            </tr>
+	        <% end %>
+		</tbody>
     </table>
 <% else %>
-    <p>
-        <em>No people were found with that attribute.</em>
-    </p>
+	<div class="box_error">
+    	<p>
+			<span class="icon_alert"></span>
+			&nbsp;
+			No people were found with that attribute.
+	    </p>
+	</div>
 <% end %>

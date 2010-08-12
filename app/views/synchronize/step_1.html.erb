@@ -1,42 +1,57 @@
 <div class="grid_16">
-    <%= form_tag synchronize_new_step_1_path, :method => :get do %>
-        <fieldset>
-            <label for="attribute_group">Attribute Group</label>
-            <select id="attribute_group" name="attribute_group_id">
-                <option value="">--</option>
-                <%= options_for_select(@attribute_groups.map{ |attribute_group| [attribute_group.name, attribute_group.id.to_s] }, params[:attribute_group_id]) %>
-            </select>
-        </fieldset>
-        <fieldset>
-            <label for="person_attribute">Attribute Group</label>
-            <select id="person_attribute" name="person_attribute_id">
-                <%= render :partial => 'options_for_attributes', :locals => {:person_attributes => @default_attributes} %>
-            </select>
-        </fieldset>
-        <p>
-            <%= submit_tag "Find people", :disabled => params[:person_attribute_id].nil?, :name => 'search', :id => 'btn_find_people' %>
-        </p>
-    <% end %>
-    <% if defined?(@people) %>
-        <div id="results">
-            <%= form_tag synchronize_new_save_step_1_path, :method => :post do %>
-                <%= render :partial => 'people', :locals => {:people => @people} %>
-                <% unless @people.blank? %>
-                <p>
-                    <%= submit_tag "Continue" %>
-                </p>
-                <% end %>
+	<h2>
+		<span class="mute">Synchronize &ndash;</span> Find people
+	</h2>
+	<%= form_tag synchronize_new_step_1_path, :method => :get do %>
+		<div class="box">
+			<table class="horiz">
+				<tr>
+					<td class="align_right">
+						<label for="attribute_group">
+							Attribute group
+						</label>
+					</td>
+					<td>
+						<select id="attribute_group" name="attribute_group_id" class="input_xlarge">
+			                <option value="">--</option>
+			                <%= options_for_select(@attribute_groups.map{ |attribute_group| [attribute_group.name, attribute_group.id.to_s] }, params[:attribute_group_id]) %>
+			            </select>
+					</td>
+					<td class="align_right">
+						<label for="person_attribute">
+							Attribute
+						</label>
+					</td>
+					<td>
+						<select id="person_attribute" name="person_attribute_id" class="input_xlarge">
+			                <%= render :partial => 'options_for_attributes', :locals => {:person_attributes => @default_attributes} %>
+			            </select>
+					</td>
+					<td>
+						<%= submit_tag "Find people", :disabled => params[:person_attribute_id].nil?, :name => 'search', :id => 'btn_find_people' %>
+					</td>
+				</tr>
+			</table>
+		</div>
+	<% end %>
+	<% if defined?(@people) %>
+        <%= form_tag synchronize_new_save_step_1_path, :method => :post do %>
+            <%= render :partial => 'people', :locals => {:people => @people} %>
+            <% unless @people.blank? %>
+				<p>
+					<%= submit_tag "Continue to choose lists &gt;&gt;" %>
+				</p>
             <% end %>
-        </div>
-    <% end %>
+        <% end %>
+	<% end %>
 </div>
 <script>
     $(document).ready(function() {
-        $('#attribute_group').change(function(ev) {
-            get_attributes('<%= synchronize_get_attributes_path %>', $(this).val());
+        $('#attribute_group').change(function() {
+            APP.sync.get_attributes('<%= synchronize_get_attributes_path %>', $(this).val());
         });
-        
-        $('#person_attribute').change(function(ev) {
+
+        $('#person_attribute').change(function() {
             document.getElementById('btn_find_people').disabled = $(this).val().length == 0;
         });
     });
