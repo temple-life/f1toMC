@@ -23,6 +23,7 @@
                 <td>
                     <%= person.last_name %>
                     <input type="hidden" name="subscribers[<%= person.email %>][last_name]" value="<%= person.last_name %>" />
+                    <input type="hidden" name="subscribers[<%= person.email %>][id]" value="<%= person.id %>" />
                 </td>
                 <td>
                     <%= person.casual_name %>
