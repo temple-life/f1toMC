@@ -2,18 +2,17 @@
     <h1>Synchronize#step_2</h1>
     <p>Find me in app/views/synchronize/step_2.html.erb</p>
     <%= form_tag synchronize_path, :method => :post do %>
-        <input type="hidden" name="emails[]" value="<%= flash[:emails].join(',') %>" />
         <table class="grid">
             <tr>
                 <th>&nbsp;</th>
                 <th>Name</th>
-                <th>People</th>
+                <th>Subscribers</th>
                 <th>Created</th>
             </tr>
             <% @lists.each do |list| %>
                 <tr>
                     <td>
-                        <input type="checkbox" name="list_id[]" value="<%= list['id'] %>" />
+                        <input type="checkbox" name="lists[]" value="<%= list['id'] %>" />
                     </td>
                     <td>
                         <%= list['name'] %>

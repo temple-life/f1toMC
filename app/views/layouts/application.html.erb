@@ -7,6 +7,13 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
+    <div class="container_16">
+        <div class="grid_16 align_right">
+            <p>
+                <%= link_to "Sign out", signout_path %>
+            </p>
+        </div>
+    </div>
     <% unless flash[:notice].nil? %>
         <div class="container_16">
             <div class="grid_16">

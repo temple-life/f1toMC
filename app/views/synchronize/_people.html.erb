@@ -22,13 +22,14 @@
             <tr>
                 <td>
                     <%= person.last_name %>
+                    <input type="hidden" name="subscribers[<%= person.email %>][last_name]" value="<%= person.last_name %>" />
                 </td>
                 <td>
                     <%= person.casual_name %>
+                    <input type="hidden" name="subscribers[<%= person.email %>][first_name]" value="<%= person.casual_name %>" />
                 </td>
                 <td>
                     <%= person.email %>
-                    <input type="hidden" name="emails[]" value="<%= person.email %>" />
                 </td>
                 <td>
                     <%= person.status %>
