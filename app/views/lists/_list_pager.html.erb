@@ -1,0 +1,41 @@
+<ul class="pager">
+	<li>
+	    <% if @current_page == 1 %>
+	        First
+	    <% else %>
+		    <a href="?page=1">First</a>
+		<% end %>
+	</li>
+	<li>
+	    <% if @current_page > 1 %>
+		    <a href="?page=<%= @current_page - 1 %>">Previous</a>
+		<% else %>
+		    Previous
+		<% end %>
+	</li>
+	<li>
+	    <% if @current_page * 20 >= @current_list['member_count'].to_i %>
+	        Next
+	    <% else %>
+		    <a href="?page=<%= @current_page + 1 %>">Next</a>
+		<% end %>
+	</li>
+	<li>
+	    <% if @current_list['member_count'].to_i / 20 > 1 %>
+	        <% last_page = (@current_list['member_count'].to_i / 20).floor %>
+	        <% if last_page == @current_page %>
+	            Last
+	        <% else %>
+		        <a href="?page=<%= last_page %>">Last</a>
+		    <% end %>
+		<% else %>
+		    Last
+		<% end %>
+	</li>
+	<li class="float_right">
+	    <%= "#{pluralize(@current_list['member_count'].to_i, 'Record')}" %>
+	</li>
+	<li class="float_right">
+	   <%= "Page #{@current_page}" %>
+	</li>
+</ul>

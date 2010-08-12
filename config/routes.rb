@@ -12,6 +12,9 @@ FtCampaigner::Application.routes.draw do |map|
   get   "synchronize/new/step_2",       :to => "synchronize#step_2"
   post  "synchronize",                  :to => 'synchronize#create'
   get   "synchronize/get_attributes"
+  
+  resources :lists, :only => [:index, :show]
+  resources :campaigns, :only => [:index, :show]
 
   match 'home', :to => "home#index"
   root :to => 'home#index'
