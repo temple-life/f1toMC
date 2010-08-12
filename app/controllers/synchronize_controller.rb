@@ -53,10 +53,11 @@ class SynchronizeController < ApplicationController
       subscribers.keys.each do |email|
         last_name = subscribers[email]['last_name']
         first_name = subscribers[email]['first_name']
+        id = subscribers[email]['id']
         
-        logger.debug "[SUBSCRIBER] email: #{email}, first_name: #{first_name}, last_name: #{last_name}"
+        logger.debug "[SUBSCRIBER] email: #{email}, first_name: #{first_name}, last_name: #{last_name}, id: #{id}"
         
-        sub_arr << {:email => email, :first_name => first_name, :last_name => last_name}
+        sub_arr << {:email => email, :first_name => first_name, :last_name => last_name, :id => id}
       end
       
       session[:subscribers] = sub_arr
@@ -86,7 +87,7 @@ class SynchronizeController < ApplicationController
       
       lists = params[:lists]
       
-      subscribers.collect! { |s| {:EMAIL => s[:email], :EMAIL_TYPE => 'html', :FNAME => s[:first_name], :LNAME => s[:last_name]} }
+      subscribers.collect! { |s| {:EMAIL => s[:email], :EMAIL_TYPE => 'html', :FNAME => s[:first_name], :LNAME => s[:last_name], :F1ID => s[:id]} }
       
       lists.each do |list|
         results = hominid.subscribe_many(list, subscribers, {:double_opt_in => false, :update_existing => true})
