@@ -1,0 +1,55 @@
+<div class="grid_16">
+	<p class="mute">
+		<a href="#">Dashboard</a> &gt; <b>Email Lists</b>
+	</p>
+	<hr />
+	<div class="float_right">
+		<label for="email_lists_filter" class="pill">
+			<%= pluralize(@syncd_lists.length, "List") %> Total
+		</label>
+		<select id="email_lists_filter" name="email_lists_filter" class="input_large">
+			<option value="">--</option>
+            <%= options_for_select(@syncd_lists.map{ |list| [list['name'], list['id'].to_s] }, params[:email_lists_filter]) %>
+		</select>
+	</div>
+	<h2>
+		<b>Email Lists</b> <span class="slug">&nbsp;&bull;&nbsp;</span> <a href="#">Email Alerts</a>
+	</h2>
+	<hr />
+</div>
+<div class="clear"></div>
+<% @syncd_lists.each do |syncd_list| %>
+    <div class="grid_8">
+    	<div class="box">
+    		<h3>
+    			<%= link_to syncd_list['name'], list_path(syncd_list['id']) %>
+    		</h3>
+    		<table class="horiz full">
+    			<tr>
+    				<td>
+    					<div class="inset align_center">
+    						<span class="mute">People</span>
+    						<br />
+    						<b><%= syncd_list['member_count'].to_i %></b>
+    					</div>
+    				</td>
+    				<td>
+    					<div class="inset align_center">
+    						<span class="mute">Rating</span>
+    						<br />
+    						<b><%= syncd_list['list_rating'].to_i %></b>
+    					</div>
+    				</td>
+    				<td>
+    					<div class="inset align_center">
+    						<span class="mute">Created</span>
+    						<br />
+    						<b><%= Time.parse(syncd_list['date_created']).strftime("%d %b %Y").upcase %></b>
+    					</div>
+    				</td>
+    			</tr>
+    		</table>
+    	</div>
+    </div>
+<% end %>
+<div class="clear"></div>

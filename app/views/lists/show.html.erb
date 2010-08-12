@@ -1,0 +1,62 @@
+<div class="grid_16">
+	<p class="mute">
+		<a href="<%= home_path %>">Dashboard</a> &gt; <a href="<%= lists_path %>">Email Lists</a> &gt; <b>Church Elders</b>
+	</p>
+	<hr />
+</div>
+<div class="clear"></div>
+<div class="grid_4">
+	<dl class="menu">
+		<dt>
+			Email Lists
+		</dt>
+		<% @syncd_lists.each do |syncd_list| %>
+    		<dd <%= "class='active'" if syncd_list['id'] == @current_list['id'] %>>
+    			<%= link_to syncd_list['name'], list_path(syncd_list['id']) %>
+    		</dd>
+		<% end %>
+	</dl>
+</div>
+<div class="grid_12">
+	<span class="float_right pill">
+		Created:
+		<%= Time.parse(@current_list['date_created']).strftime("%d %b %Y").upcase %>
+	</span>
+	<h2>
+		<%= @current_list['name'] %>
+	</h2>
+	<div class="clear"></div>
+	<%= render 'list_pager' %>
+	<table class="grid">
+		<thead>
+			<tr>
+				<th>
+					Last
+				</th>
+				<th>
+					First
+				</th>
+				<th class="shrink">
+					Email
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+		    <% @list_members.each do |member| %>
+    			<tr>
+    				<td>
+    					<%= member['merges']['LNAME'] %>
+    				</td>
+    				<td>
+    					<%= member['merges']['FNAME'] %>
+    				</td>
+    				<td class="shrink">
+    					<%= member['email'] %>
+    				</td>
+    			</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<%= render 'list_pager' %>
+</div>
+<div class="clear"></div>

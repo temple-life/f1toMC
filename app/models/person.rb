@@ -24,7 +24,11 @@ class Person
               when "1" # home phone
                 @phone = communication['communicationValue']
               when "4" # email
-                @email = communication['communicationValue']
+                if @email.nil?
+                  unless communication['person']['@id'].blank?
+                    @email = communication['communicationValue']
+                  end
+                end
             end
           end
         end
