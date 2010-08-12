@@ -19,7 +19,14 @@
     <% end %>
     <% if defined?(@people) %>
         <div id="results">
-            <%= render :partial => 'people', :locals => {:people => @people} %>
+            <%= form_tag synchronize_new_save_step_1_path, :method => :post do %>
+                <%= render :partial => 'people', :locals => {:people => @people} %>
+                <% unless @people.blank? %>
+                <p>
+                    <%= submit_tag "Continue" %>
+                </p>
+                <% end %>
+            <% end %>
         </div>
     <% end %>
 </div>

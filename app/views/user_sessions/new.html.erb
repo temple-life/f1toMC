@@ -2,7 +2,7 @@
     <%= form_tag(user_sessions_path, :method => :post, :class => 'signin_form') do %>
         <fieldset>
             <label for="church_code">Church code</label>
-            <input name="church_code" id="church_code" />
+            <input name="church_code" id="church_code" autofocus="autofocus" />
             <%= submit_tag "Sign in" %>
         </fieldset>
     <% end %>

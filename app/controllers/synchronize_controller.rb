@@ -26,22 +26,33 @@ class SynchronizeController < ApplicationController
       search_json = ActiveSupport::JSON.decode(search_raw.body)
 
       unless search_json.nil?
-        search_json['results']['person'].each do |person|
-          @people << Person.new(person)
+        unless search_json['results']['person'].nil?
+          search_json['results']['person'].each do |person|
+            new_person = Person.new(person)
+            @people << new_person unless new_person.email.blank?
+          end
         end
       end
     end
   end
   
   def save_step_1
-    @sync = Synchronize.new
     # save sync to session for step_2
+    flash[:emails] = params[:emails]
     
-    redirect_to synchronize_new_step_2
+    store_attribute_groups nil
+    
+    redirect_to synchronize_new_step_2_path
   end
 
   def step_2
     # retrieve sync from session
+    hominid = Hominid::Base.new({:api_key => @current_account.mailchimp_key})
+    @lists = hominid.lists
+    
+    @lists.each do |list|
+      logger.debug "[DEBUG] #{list.inspect}"
+    end
   end
   
   def create

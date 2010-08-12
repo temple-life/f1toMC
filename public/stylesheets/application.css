@@ -18,3 +18,47 @@ legend {
 	margin: 0 0 0 -5px;
 	padding: 0 2px;
 }
+
+/* `Table >> Grid
+----------------------------------------------------------------------------------------------------*/
+
+table.grid {
+	background: #fff;
+	width: 100%;
+}
+
+table.grid table {
+	width: auto;
+}
+
+table.grid > tr > th,
+table.grid > tr > td,
+table.grid > tbody > tr > th,
+table.grid > tbody > tr > td {
+	padding: 5px 10px;
+	text-align: left;
+}
+
+table.grid > tr > th,
+table.grid > tbody > tr > th {
+	background-color: #eee;
+	border: 0 solid #ddd;
+	border-width: 1px 0;
+	padding-left: 10px;
+	padding-right: 10px;
+	text-shadow: #fff 0 1px 1px;
+	vertical-align: middle;
+	font-weight: bold;
+}
+
+table.grid > th:first-child,
+table.grid > tbody > th:first-child {
+	border-left: 0;
+}
+
+/* `Misc
+----------------------------------------------------------------------------------------------------*/
+
+.mute {
+  color: #aaa;
+}
