@@ -2,7 +2,7 @@
 	<p>
 		<strong>Note:</strong> The following people will be added, unless you exclude them via the <em>Remove</em> button.
 	</p>
-    <table class="grid">
+    <table id="results" class="grid">
 		<thead>
         	<tr>
 	            <th>
@@ -27,45 +27,51 @@
 		</thead>
 		<tbody>
     	    <% people.each do |person| %>
-	            <tr>
-	                <td>
-	                    <%= person.last_name %>
-	                    <input type="hidden" name="subscribers[<%= person.email %>][last_name]" value="<%= person.last_name %>" />
-	                    <input type="hidden" name="subscribers[<%= person.email %>][id]" value="<%= person.id %>" />
-	                </td>
-	                <td>
-	                    <%= person.casual_name %>
-	                    <input type="hidden" name="subscribers[<%= person.email %>][first_name]" value="<%= person.casual_name %>" />
-	                </td>
-	                <td>
-						<% unless person.email.nil? %>
-	                    	<%= person.email %>
-						<% else %>
-							<%= html_slug %>
-						<% end %>
-	                </td>
-	                <td>
-	                    <% unless person.status.nil? %>
-							<%= person.status %>
-							<%= " > #{person.sub_status}" unless person.sub_status.nil? %>
-						<% else %>
-							<%= html_slug %>
-						<% end %>
-	                </td>
-	                <td>
-						<% unless person.phone.nil? %>
-	                    	<%= person.phone %>
-						<% else %>
-							<%= html_slug %>
-						<% end %>
-	                </td>
-	                <td class="shrink">
-						<a href="#" class="remove">Remove</a>
-					</td>
-	            </tr>
+            <tr>
+                <td>
+                    <%= person.last_name %>
+                    <input type="hidden" name="subscribers[<%= person.email %>][last_name]" value="<%= person.last_name %>" />
+                    <input type="hidden" name="subscribers[<%= person.email %>][id]" value="<%= person.id %>" />
+                </td>
+                <td>
+                    <%= person.casual_name %>
+                    <input type="hidden" name="subscribers[<%= person.email %>][first_name]" value="<%= person.casual_name %>" />
+                </td>
+                <td>
+            		<% unless person.email.nil? %>
+                    	<%= person.email %>
+            		<% else %>
+            			<%= html_slug %>
+            		<% end %>
+                </td>
+                <td>
+                    <% unless person.status.nil? %>
+            			<%= person.status %>
+            			<%= " > #{person.sub_status}" unless person.sub_status.nil? %>
+            		<% else %>
+            			<%= html_slug %>
+            		<% end %>
+                </td>
+                <td>
+            		<% unless person.phone.nil? %>
+                    	<%= person.phone %>
+            		<% else %>
+            			<%= html_slug %>
+            		<% end %>
+                </td>
+                <td class="shrink">
+            		<a href="#" class="remove">Remove</a>
+            	</td>
+            </tr>
 	        <% end %>
 		</tbody>
     </table>
+    <ul class="pager">
+        <li class="float_right">
+            <%= @search_data[:total_records] %>
+            records
+        </li>
+    </ul>
 <% else %>
 	<div class="box_error">
     	<p>

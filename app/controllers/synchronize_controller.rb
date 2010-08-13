@@ -3,6 +3,8 @@ class SynchronizeController < ApplicationController
   before_filter :load_account
   
   def step_1
+    store_attribute_groups(nil) unless retrieve_attribute_groups.nil?
+    
     attribute_groups_url = "#{current_user_session.api_url}people/AttributeGroups.json"
     raw = current_user_session.access_token.get(attribute_groups_url)
     decoded_json = ActiveSupport::JSON.decode(raw.body)
@@ -16,26 +18,13 @@ class SynchronizeController < ApplicationController
     @default_attributes = []
     
     if params[:search] and params[:attribute_group_id] and params[:person_attribute_id]
-      @people = []
       group = find_attribute_group(params[:attribute_group_id].to_i)
       
       unless group.person_attributes.blank?
         @default_attributes = group.person_attributes.sort_by{ |a| a.name }
       end
       
-      # perform the search
-      search_url = "#{current_user_session.api_url}people/Search.json?attribute=#{params[:person_attribute_id]}&include=communications"
-      search_raw = current_user_session.access_token.get(search_url)
-      search_json = ActiveSupport::JSON.decode(search_raw.body)
-
-      unless search_json.nil?
-        unless search_json['results']['person'].nil?
-          search_json['results']['person'].each do |person|
-            new_person = Person.new(person)
-            @people << new_person unless new_person.email.blank?
-          end
-        end
-      end
+      @people = perform_people_search(params[:person_attribute_id], params[:page] || 1)
     end
     
   end
@@ -137,6 +126,26 @@ class SynchronizeController < ApplicationController
   def find_attribute_group(group_id)
     @attribute_groups = retrieve_attribute_groups
     @attribute_groups.find{ |attribute_group| attribute_group.id == group_id }
+  end
+  
+  def perform_people_search(attribute_id, page)
+    @search_data = nil
+    people = []
+    search_url = "#{current_user_session.api_url}people/Search.json?attribute=#{attribute_id}&page=#{page}&include=communications&recordsPerPage=100"
+    search_raw = current_user_session.access_token.get(search_url)
+    search_json = ActiveSupport::JSON.decode(search_raw.body)
+
+    unless search_json.nil?
+      @search_data = {:has_additional_pages => search_json['results']['@additionalPages'].to_i > 0, :page => search_json['results']['@pageNumber'].to_i, :total_records => search_json['results']['@totalRecords']}
+      unless search_json['results']['person'].nil?
+        search_json['results']['person'].each do |person|
+          new_person = Person.new(person)
+          people << new_person unless new_person.email.blank?
+        end
+      end
+    end
+    
+    people
   end
 
 end
