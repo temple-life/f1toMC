@@ -192,7 +192,7 @@ var APP = (function($, window, undefined) {
 			placeholder: function() {
 				var placeholder_supported = 'placeholder' in document.createElement('input');
 
-				if (!$('*[placeholder]').length || placeholder_supported) {
+				if (placeholder_supported || !$('*[placeholder]').length) {
 					return;
 				}
 
@@ -218,7 +218,7 @@ var APP = (function($, window, undefined) {
 			autofocus: function() {
 				var autofocus_supported = 'autofocus' in document.createElement('input');
 
-				if (!$('*[autofocus]').length || autofocus_supported) {
+				if (autofocus_supported || !$('*[autofocus]').length) {
 					return;
 				}
 
