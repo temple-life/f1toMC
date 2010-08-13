@@ -193,6 +193,41 @@ var APP = (function($, window, undefined) {
 					}
 				});
 			},
+			autofocus: function() {
+				var autofocus_supported = 'autofocus' in document.createElement('input');
+
+				if (!$('*[autofocus]').length || autofocus_supported) {
+					return;
+				}
+
+				$('*[autofocus]:first').focus().select();
+			},
+			placeholder: function() {
+				var placeholder_supported = 'placeholder' in document.createElement('input');
+
+				if (!$('*[placeholder]').length || placeholder_supported) {
+					return;
+				}
+
+				$('*[placeholder]').each(function() {
+					var el = $(this);
+					var text = el.attr('placeholder');
+
+					if (!el.val()) {
+						el.val(text);
+					}
+
+					el.focus(function() {
+						if (el.val() === text) {
+							el.val('');
+						}
+					}).blur(function() {
+						if (!el.val()) {
+							el.val(text);
+						}
+					});
+				});
+			},
 			tooltip: function() {
 				// Does element exist?
 				if (!$('*[title]').length) {
