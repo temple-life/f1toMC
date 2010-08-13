@@ -20,7 +20,7 @@
 <div class="grid_12">
 	<span class="float_right pill">
 		Created:
-		<%= Time.parse(@current_list['date_created']).strftime("%d %b %Y").upcase %>
+		<%= Time.parse(@current_list['date_created']).strftime("%m/%d/%Y") %>
 	</span>
 	<h2>
 		<%= @current_list['name'] %>
@@ -43,17 +43,7 @@
 		</thead>
 		<tbody>
 		    <% @list_members.each do |member| %>
-    			<tr>
-    				<td>
-    					<%= member['merges']['LNAME'] %>
-    				</td>
-    				<td>
-    					<%= member['merges']['FNAME'] %>
-    				</td>
-    				<td class="shrink">
-    					<%= member['email'] %>
-    				</td>
-    			</tr>
+		        <%= render :partial => "list_member", :locals => {:member => member} %>
 			<% end %>
 		</tbody>
 	</table>
