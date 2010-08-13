@@ -20,7 +20,7 @@
 				Church code: <%= @current_user_session.church_code.upcase %>
 			</div>
 			<div class="grid_5 align_right">
-				<a href="#">Account</a>
+				<a href="<%= edit_account_path %>">Account</a>
 				|
 				<%= link_to "Sign out", signout_path %>
 			</div>

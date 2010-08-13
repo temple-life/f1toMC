@@ -1,13 +1,56 @@
 <div class="grid_16">
-    <%= form_for @current_account do |f| %>
-        <%= f.error_messages %>
-        <fieldset>
-            <%= f.label :mailchimp_key, "MailChimp API Key" %>
-            <%= f.text_field :mailchimp_key %>
-        </fieldset>
-        <p>
-            <%= submit_tag "Save changes" %>
-            <%= link_to "Cancel", home_path, :class => 'cancel' %>
-        </p>
-    <% end %>
+	<h2>
+		Account
+	</h2>
+	<hr />
 </div>
+<div class="clear"></div>
+<div class="grid_8">
+	<p>
+		Please enter the API key provided to you by MailChimp. You can find your key by clicking the <em>Account</em> drop-down menu in their admin interface, and then selecting <strong>api keys &amp; info</strong>. The key itself is an alphanumeric value.
+	</p>
+	<div class="box">
+	    <%= form_for @current_account do |f| %>
+	        <%= f.error_messages %>
+	        <fieldset>
+	            <%= f.label :mailchimp_key, "MailChimp API Key" %>
+	            <%= f.text_field :mailchimp_key, :class => "input_full big", :autofocus => "autofocus" %>
+	        </fieldset>
+	        <p>
+	            <%= submit_tag "Save changes" %>
+				&nbsp;
+	            <%= link_to "Cancel", home_path, :class => "cancel" %>
+	        </p>
+	    <% end %>
+	</div>
+</div>
+<div class="grid_8">
+	<p>
+		<%= image_tag('mailchimp_api_key.png', :class => "figure") %>
+	</p>
+</div>
+
+
+
+
+<!-- <div class="grid_8">
+	<p>
+		Please enter the API key provided to you by MailChimp. You can find your key by clicking the <em>Account</em> drop-down menu in their admin interface, and then selecting <strong>api keys &amp; info</strong>. The key itself is an alphanumeric value.
+	</p>
+	<form action="" class="box">
+		<fieldset>
+			<label for="mailchimp_api_key">
+				API key
+			</label>
+			<input type="text" class="input_full big" />
+		</fieldset>
+		<p>
+			<input type="submit" value="Save API key" />
+		</p>
+	</form>
+</div>
+<div class="grid_8">
+	<p>
+		<img src="assets/images/mailchimp_api_key.png" class="figure" />
+	</p>
+</div> -->
