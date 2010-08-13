@@ -7,7 +7,7 @@
 		<label for="email_lists_filter" class="pill">
 			<%= pluralize(@syncd_lists.length, "List") %> Total
 		</label>
-		<select id="email_lists_filter" name="email_lists_filter" class="input_large">
+		<select id="email_lists_filter" name="email_lists_filter" class="input_large jump_list">
 			<option value="">--</option>
             <%= options_for_select(@syncd_lists.map{ |list| [list['name'], list['id'].to_s] }, params[:email_lists_filter]) %>
 		</select>

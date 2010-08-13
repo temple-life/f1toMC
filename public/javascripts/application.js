@@ -164,6 +164,17 @@ var APP = (function($, window, undefined) {
 					enable_or_disable_form(el);
 				});
 			},
+			jump_list: function() {
+				if (!$('select.jump_list').length) {
+					return;
+				}
+
+				$('select.jump_list').change(function() {
+					if (this.value) {
+						window.top.location = window.location.toString() + '/' + this.value;
+					}
+				});
+			},
 			tooltip: function() {
 				// Does element exist?
 				if (!$('*[title]').length) {
