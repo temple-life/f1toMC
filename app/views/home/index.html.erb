@@ -11,21 +11,22 @@
 		<h3>
 			Whatcha wanna do?
 		</h3>
+		<hr />
 		<p>
 			Chose one of the following options...
 		</p>
-    	<ul>
-	        <li>
-	            <%= link_to "Synchronize a new list", synchronize_new_step_1_path %>
-	        </li>
-	        <li>
-				<%= link_to "View MailChimp lists", lists_path %>
-	        </li>
-	    </ul>
+		<div class="float_left width_50">
+			<%= link_to "", synchronize_new_step_1_path, :id => "button_sync" %>
+		</div>
+		<div class="float_right width_50 align_right">
+			<%= link_to "", lists_path, :id => "button_lists" %>
+		</div>
+		<div class="clear"></div>
     <% else %>
 		<h3>
 			Let's get started...
 		</h3>
+		<hr />
 		<p>
 			Before you begin, we need your MailChimp API key.
 		</p>
@@ -40,8 +41,9 @@
 		<h3>
 			Hello there!
 		</h3>
+		<hr />
 		<p>
-			Welcome to the Fellowship Technologies <em>FT Campaigner</em> app.
+			Welcome to <em>FT Campaigner</em>.
 		</p>
 		<p>
 			By using this application, you can keep your Fellowship One and MailChimp lists in sync. This helps to cut down on the headaches of manually adding, maintaining, and pruning lists of individuals.

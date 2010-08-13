@@ -54,6 +54,45 @@ abbr {
 	height: 16px;
 }
 
+/* `Buttons
+----------------------------------------------------------------------------------------------------*/
+
+#button_sync,
+#button_lists {
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
+	background-repeat: no-repeat;
+	display: inline-block;
+	font-size: 0;
+	overflow: hidden;
+	position: relative;
+	text-decoration: none;
+	text-indent: -99999px;
+	width: 200px;
+	height: 40px;
+}
+
+#button_sync:hover,
+#button_lists:hover {
+	-moz-box-shadow: #09f 0 0 5px;
+	-webkit-box-shadow: #09f 0 0 5px;
+	box-shadow: #09f 0 0 5px;
+}
+
+#button_sync:active,
+#button_lists:active {
+	top: 1px;
+}
+
+#button_sync {
+	background-image: url(../images/button_sync.png);
+}
+
+#button_lists {
+	background-image: url(../images/button_lists.png);
+}
+
 /* `Form Tweaks
 ----------------------------------------------------------------------------------------------------*/
 
