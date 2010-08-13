@@ -170,10 +170,19 @@ var APP = (function($, window, undefined) {
 				}
 
 				$('select.jump_list').change(function() {
-					if (this.value) {
-						var url = window.location.toString();
-						var url_len = url.length;
-						var last_char = url.substring(url_len - 1, url_len);
+					if (!this.value) {
+						return;
+					}
+
+					var url, url_len, last_char;
+
+					if (this.value.match('://')) {
+						window.top.location = this.value;
+					}
+					else {
+						url = window.location.toString();
+						url_len = url.length;
+						last_char = url.substring(url_len - 1, url_len);
 
 						if (last_char === '/') {
 							window.top.location = url + this.value;
