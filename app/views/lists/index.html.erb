@@ -13,7 +13,7 @@
 		</select>
 	</div>
 	<h2>
-		<b>Email Lists</b> <span class="slug">&nbsp;&bull;&nbsp;</span> <a href="#">Email Alerts</a>
+		<b>Email Lists</b>
 	</h2>
 	<hr />
 </div>
@@ -21,6 +21,7 @@
 <% @syncd_lists.each do |syncd_list| %>
     <div class="grid_8">
     	<div class="box">
+    	    <%= link_to "View campaigns", list_campaigns_path(syncd_list['id']), :class => 'float_right pill' %>
     		<h3>
     			<%= link_to syncd_list['name'], list_path(syncd_list['id']) %>
     		</h3>

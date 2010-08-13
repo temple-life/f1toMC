@@ -1,2 +1,122 @@
-<h1>Campaigns#show</h1>
-<p>Find me in app/views/campaigns/show.html.erb</p>
+<div class="grid_16">
+	<p class="mute">
+		<a href="<%= home_path %>">Dashboard</a> &gt; <a href="<%= lists_path %>">Email Lists</a> &gt; <a href="<%= list_campaigns_path @current_list['id'] %>">Campaigns</a>
+	</p>
+	<hr />
+</div>
+<div class="clear"></div>
+<div class="grid_4">
+	<dl class="menu">
+		<dt>
+			Campaigns
+		</dt>
+		<% @campaigns.each do |campaign| %>
+    		<dd <%= "class='active'" if campaign['id'] == params[:id] %>>
+    			<a href="<%= list_campaign_path @current_list['id'], campaign['id'] %>"><%= campaign['title'] %></a>
+    		</dd>
+		<% end %>
+	</dl>
+	<dl class="menu">
+		<dt>
+			<span class="icon_alert float_right"></span>
+			Alerts
+		</dt>
+		<dd>
+			<span class="float_right"><%= @stats['hard_bounces'].to_i + @stats['soft_bounces'].to_i %></span> 
+			<abbr title="Bounced">B</abbr>ounced
+		</dd>
+		<dd>
+			<span class="float_right"><%= @stats['abuse_reports'].to_i %></span> 
+			Marked as <abbr title="Marked as Spam">S</abbr>pam
+		</dd>
+		<dd>
+			<span class="float_right"><%= @stats['unsubscribes'].to_i %></span> 
+			<abbr title="Unsubscribed">U</abbr>nsubscribed
+		</dd>
+	</dl>
+</div>
+<div class="grid_12">
+	<span class="float_right pill">
+		Sent <%= Time.parse(@campaign['send_time']).strftime('%m/%d/%Y at %I:%M%p') %>
+	</span>
+	<h2 class="gutter_bottom_half">
+		<%= @campaign['title'] %>
+	</h2>
+	<p class="mute">
+		Sent to list: <%= @current_list['name'] %>
+	</p>
+	<div class="clear"></div>
+	<ul class="pager">
+		<li>
+			First
+		</li>
+		<li>
+			Previous
+		</li>
+		<li>
+			<a href="#">Next</a>
+		</li>
+		<li>
+			<a href="#">Last</a>
+		</li>
+		<li class="float_right">
+			1 - 10 out of 250
+		</li>
+	</ul>
+	<table class="grid">
+		<thead>
+			<tr>
+				<th>
+					Last
+				</th>
+				<th>
+					First
+				</th>
+				<th>
+					Email
+				</th>
+				<th class="shrink">
+					Reason
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+		    <% 20.times do %>
+				<tr>
+					<td>
+						Jetson
+					</td>
+					<td>
+						George
+					</td>
+					<td>
+						george.jetson@example.com
+					</td>
+					<td class="shrink align_center">
+					    <abbr title="Bounced">B</abbr>
+						<abbr title="Marked as Spam">S</abbr>
+						<abbr title="Unsubscribed">U</abbr>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<ul class="pager">
+		<li>
+			First
+		</li>
+		<li>
+			Previous
+		</li>
+		<li>
+			<a href="#">Next</a>
+		</li>
+		<li>
+			<a href="#">Last</a>
+		</li>
+		<li class="float_right">
+			1 - 10 out of 250
+		</li>
+	</ul>
+</div>
+<div class="clear"></div>
