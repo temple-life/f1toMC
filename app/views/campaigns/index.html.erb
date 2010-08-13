@@ -13,8 +13,8 @@
 		</select>
 	</div>
 	<h2>
+		<span class="mute">Campaigns for:</span>
 	    <%= @current_list['name'] %>
-		<b>Campaigns</b>
 	</h2>
 	<hr />
 </div>
@@ -75,5 +75,13 @@
         <div class="clear"></div>
     <% end %>
 <% else %>
-    <p>No campaigns exist for that list.</p>
+	<div class="grid_16">
+		<div class="box">
+	    	<p>
+				<span class="icon_alert"></span>
+				&nbsp;
+				No campaigns exist for this email list.
+			</p>
+		</div>
+	</div>
 <% end %>

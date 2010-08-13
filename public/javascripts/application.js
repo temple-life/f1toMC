@@ -1,7 +1,3 @@
-function find_people(frm) {
-	return false;
-}
-
 //
 // Automatically calls all functions in APP.init
 //
@@ -193,15 +189,6 @@ var APP = (function($, window, undefined) {
 					}
 				});
 			},
-			autofocus: function() {
-				var autofocus_supported = 'autofocus' in document.createElement('input');
-
-				if (!$('*[autofocus]').length || autofocus_supported) {
-					return;
-				}
-
-				$('*[autofocus]:first').focus().select();
-			},
 			placeholder: function() {
 				var placeholder_supported = 'placeholder' in document.createElement('input');
 
@@ -214,19 +201,28 @@ var APP = (function($, window, undefined) {
 					var text = el.attr('placeholder');
 
 					if (!el.val()) {
-						el.val(text);
+						el.val(text).addClass('placeholder_text');
 					}
 
 					el.focus(function() {
 						if (el.val() === text) {
-							el.val('');
+							el.val('').removeClass('placeholder_text');;
 						}
 					}).blur(function() {
 						if (!el.val()) {
-							el.val(text);
+							el.val(text).addClass('placeholder_text');;
 						}
 					});
 				});
+			},
+			autofocus: function() {
+				var autofocus_supported = 'autofocus' in document.createElement('input');
+
+				if (!$('*[autofocus]').length || autofocus_supported) {
+					return;
+				}
+
+				$('*[autofocus]:first').focus().select();
 			},
 			tooltip: function() {
 				// Does element exist?

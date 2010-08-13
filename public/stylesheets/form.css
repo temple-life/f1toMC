@@ -9,7 +9,15 @@
 ----------------------------------------------------------------------------------------------------*/
 
 ::-webkit-input-placeholder {
-	color: #000;
+	color: #ccc;
+}
+
+/*
+	Separate rule for Firefox.
+	Cannot stack with WebKit's.
+*/
+.placeholder_text {
+	color: #ccc !important;
 }
 
 input[type=search] {
