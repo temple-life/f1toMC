@@ -171,7 +171,16 @@ var APP = (function($, window, undefined) {
 
 				$('select.jump_list').change(function() {
 					if (this.value) {
-						window.top.location = window.location.toString() + '/' + this.value;
+						var url = window.location.toString();
+						var url_len = url.length;
+						var last_char = url.substring(url_len - 1, url_len);
+
+						if (last_char === '/') {
+							window.top.location = url + this.value;
+						}
+						else {
+							window.top.location = url + '/' + this.value;
+						}
 					}
 				});
 			},
