@@ -164,6 +164,26 @@ var APP = (function($, window, undefined) {
 					enable_or_disable_form(el);
 				});
 			},
+			jump_list: function() {
+				if (!$('select.jump_list').length) {
+					return;
+				}
+
+				$('select.jump_list').change(function() {
+					if (this.value) {
+						var url = window.location.toString();
+						var url_len = url.length;
+						var last_char = url.substring(url_len - 1, url_len);
+
+						if (last_char === '/') {
+							window.top.location = url + this.value;
+						}
+						else {
+							window.top.location = url + '/' + this.value;
+						}
+					}
+				});
+			},
 			tooltip: function() {
 				// Does element exist?
 				if (!$('*[title]').length) {
