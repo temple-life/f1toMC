@@ -1,2 +1,79 @@
-<h1>Campaigns#index</h1>
-<p>Find me in app/views/campaigns/index.html.erb</p>
+<div class="grid_16">
+	<p class="mute">
+		<a href="#">Dashboard</a> &gt; <%= link_to "Email Lists", lists_path %> &gt; <b>Campaigns</b>
+	</p>
+	<hr />
+	<div class="float_right">
+		<label for="email_lists_filter" class="pill">
+			<%= pluralize(@campaigns.length, 'Campaign') %> Total
+		</label>
+		<select id="campaigns_filter" name="campaigns_filter" class="input_large jump_list">
+			<option value="">--</option>
+            <%= options_for_select(@campaigns.map{ |campaign| [campaign[:title], campaign[:id].to_s] }, params[:campaigns_filter]) %>
+		</select>
+	</div>
+	<h2>
+	    <%= @current_list['name'] %>
+		<b>Campaigns</b>
+	</h2>
+	<hr />
+</div>
+<div class="clear"></div>
+<% unless @campaigns.blank? %>
+    <% @campaigns.each do |campaign| %>
+        <div class="grid_8">
+        	<div class="box">
+        	    <span class="float_right pill">
+        	       <%= campaign[:emails_sent].to_i %> sent
+        	    </span>
+        		<h3 class="gutter_bottom_half">
+        			<a href="<%= list_campaign_path(@current_list['id'], campaign[:id]) %>"><%= campaign[:title] %></a>
+        		</h3>
+        		<p class="mute">
+        			Sent <%= Time.parse(campaign[:send_time]).strftime('%m/%d/%Y at %I:%M%p') %>
+        		</p>
+        		<table class="horiz full">
+        			<tr>
+        				<td>
+        					<div class="inset align_center">
+        						<span class="mute">Bounced</span>
+        						<br />
+        						<b><%= campaign[:bounces].to_i %></b>
+        					</div>
+        				</td>
+        				<td>
+        					<div class="inset align_center">
+        						<span class="mute">Spam</span>
+        						<br />
+        						<b><%= campaign[:spam].to_i %></b>
+        					</div>
+        				</td>
+        				<td>
+        					<div class="inset align_center">
+        						<span class="mute">Unsubscribed</span>
+        						<br />
+        						<b><%= campaign[:unsubscribes].to_i %></b>
+        					</div>
+        				</td>
+        			</tr>
+        		</table>
+        	</div>
+        </div>
+    <% end %>
+    <div class="clear"></div>
+    <% if include_paging_for_campaigns? %>
+        <div class="grid_16">
+            <p>
+                <% if @current_page > 1 %>
+                    <a href="?page=<%= @current_page - 1 %>">Prev</a>
+                <% end %>
+        	    <% if @campaigns.length == 20 %>
+                    <a href="?page=<%= @current_page + 1 %>">Next</a>
+                <% end %>
+            </p>
+        </div>
+        <div class="clear"></div>
+    <% end %>
+<% else %>
+    <p>No campaigns exist for that list.</p>
+<% end %>
