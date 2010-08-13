@@ -33,7 +33,7 @@
 	                        <%= list['member_count'].to_i %>
 	                    </td>
 	                    <td>
-	                        <%= DateTime.parse(list['date_created']).strftime("%d %b %Y at %I:%m %p") %>
+	                        <%= DateTime.parse(list['date_created']).strftime("%d %b %Y") %>
 	                    </td>
 	                </tr>
 	            <% end %>
