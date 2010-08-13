@@ -1,6 +1,6 @@
 <div class="grid_16">
 	<p class="mute">
-		<a href="<%= home_path %>">Dashboard</a> &gt; <a href="<%= lists_path %>">Email Lists</a> &gt; <a href="<%= list_campaigns_path @current_list['id'] %>">Campaigns</a>
+		<a href="<%= home_path %>">Dashboard</a> &gt; <a href="<%= lists_path %>">Email Lists</a> &gt; <a href="<%= list_campaigns_path @current_list['id'] %>">Campaigns</a> &gt; <b>Campaign</b>
 	</p>
 	<hr />
 </div>
@@ -46,23 +46,7 @@
 		Sent to list: <%= @current_list['name'] %>
 	</p>
 	<div class="clear"></div>
-	<ul class="pager">
-		<li>
-			First
-		</li>
-		<li>
-			Previous
-		</li>
-		<li>
-			<a href="#">Next</a>
-		</li>
-		<li>
-			<a href="#">Last</a>
-		</li>
-		<li class="float_right">
-			1 - 10 out of 250
-		</li>
-	</ul>
+	<%= render 'lists/list_pager' %>
 	<table class="grid">
 		<thead>
 			<tr>
@@ -75,48 +59,38 @@
 				<th>
 					Email
 				</th>
-				<th class="shrink">
-					Reason
+				<th class="shrink align_center">
+					Alerts
 				</th>
 			</tr>
 		</thead>
 		<tbody>
-		    <% 20.times do %>
-				<tr>
-					<td>
-						Jetson
-					</td>
-					<td>
-						George
-					</td>
-					<td>
-						george.jetson@example.com
-					</td>
-					<td class="shrink align_center">
-					    <abbr title="Bounced">B</abbr>
-						<abbr title="Marked as Spam">S</abbr>
-						<abbr title="Unsubscribed">U</abbr>
-					</td>
-				</tr>
+		    <% @list_members.each do |member| %>
+    		    <tr>
+                	<td>
+                		<%= member['merges']['LNAME'] %>
+                	</td>
+                	<td>
+                		<%= member['merges']['FNAME'] %>
+                	</td>
+                	<td>
+                		<%= member['email'] %>
+                	</td>
+                	<td class="shrink align_center">
+                	    <% if @bounces.include? member['email'] %>
+						    <abbr title="Bounced">B</abbr>
+						<% end %>
+						<% if @spam.include? member['email'] %>
+						    <abbr title="Marked as Spam">S</abbr>
+						<% end %>
+						<% if @unsubscribes.include? member['email'] %>
+						    <abbr title="Unsubscribed">U</abbr>
+						<% end %>
+                	</td>
+                </tr>
 			<% end %>
 		</tbody>
 	</table>
-	<ul class="pager">
-		<li>
-			First
-		</li>
-		<li>
-			Previous
-		</li>
-		<li>
-			<a href="#">Next</a>
-		</li>
-		<li>
-			<a href="#">Last</a>
-		</li>
-		<li class="float_right">
-			1 - 10 out of 250
-		</li>
-	</ul>
+	<%= render 'lists/list_pager' %>
 </div>
 <div class="clear"></div>
