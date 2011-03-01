@@ -21,14 +21,14 @@ class ListsController < ApplicationController
   private
   
   def load_hominid
-    @hominid = Hominid::Base.new({:api_key => @current_account.mailchimp_key})
+    @hominid = Hominid::API.new(@current_account.mailchimp_key)
   end
 
   def find_syncd_lists
     lists = @hominid.lists
     saved_lists = @current_account.synchronize.all
     
-    syncd_lists = lists.find_all do |list|
+    syncd_lists = lists['data'].find_all do |list|
       saved_lists.find { |sl| sl.mailchimp_list_id == list['id'] }
     end
     

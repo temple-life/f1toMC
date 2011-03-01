@@ -13,6 +13,7 @@ class UserSessionsController < ApplicationController
       @user_session.church_code = params[:church_code].downcase
       
       site = @user_session.api_url
+      
       oauth_callback = user_sessions_callback_url
       key = APP_CONFIG["fellowshipone_api_key"]
       secret = APP_CONFIG["fellowshipone_api_secret"]
