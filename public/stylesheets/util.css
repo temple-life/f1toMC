@@ -101,6 +101,19 @@
 	width: 1%;
 }
 
+.pinch_left {
+  padding-left: 0 !important;
+}
+
+.pinch_right {
+  padding-right: 0 !important;
+}
+
+.pinch_right div.checker,
+.grid td div.checker {
+  margin-right: 0;
+}
+
 /* `Widths
 ----------------------------------------------------------------------------------------------------*/
 

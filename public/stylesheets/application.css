@@ -110,6 +110,14 @@ fieldset label {
 	margin-bottom: 5px;
 }
 
+/* `Uniformjs Tweaks
+----------------------------------------------------------------------------------------------------*/
+
+div.checker,
+div.radio {
+  margin-top: -3px;
+}
+
 /* `Wrapper + Main
 ----------------------------------------------------------------------------------------------------*/
 
@@ -392,40 +400,4 @@ fieldset label {
 .pager a:active {
 	padding-top: 6px;
 	padding-bottom: 4px;
-}
-
-/* `Tooltip
-----------------------------------------------------------------------------------------------------*/
-
-#tooltip,
-#tooltip_inner {
-	border: 1px solid;
-}
-
-#tooltip {
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
-	-moz-box-shadow: rgba(0, 0, 0, 0.5) 0 1px 3px;
-	-webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 1px 3px;
-	box-shadow: rgba(0, 0, 0, 0.5) 0 1px 3px;
-	background: #fff;
-	border-color: #666;
-	display: none;
-	font-size: 11px;
-	padding: 1px;
-	position: absolute;
-	left: -9999px;
-	z-index: 9999;
-}
-
-#tooltip_inner {
-	-moz-border-radius: 4px;
-	-webkit-border-radius: 4px;
-	border-radius: 4px;
-	background: #f9f9f9;
-	border-color: #ccc;
-	color: #000;
-	padding: 5px 10px;
-	white-space: nowrap;
 }

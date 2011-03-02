@@ -61,8 +61,8 @@ class SynchronizeController < ApplicationController
 
   def step_2
     # retrieve sync from session
-    hominid = Hominid::Base.new({:api_key => @current_account.mailchimp_key})
-    @lists = hominid.lists
+    hominid = Hominid::API.new(@current_account.mailchimp_key)
+    @lists = hominid.lists['data']
   end
   
   def create
@@ -72,7 +72,7 @@ class SynchronizeController < ApplicationController
       flash[:error] = "Something went wrong and we could not retrieve a list of subscribers."
       redirect_to synchronize_new_step_1_path
     else
-      hominid = Hominid::Base.new({:api_key => @current_account.mailchimp_key})
+      hominid = Hominid::API.new(@current_account.mailchimp_key)
       
       lists = params[:lists]
       

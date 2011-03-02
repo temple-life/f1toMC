@@ -22,37 +22,9 @@ var APP = (function($, window, undefined) {
 			}
 		},
 		init: {
-			full_input_size: function() {
-				if (!$('textarea, .input_full').length) {
-					return;
-				}
-
-				// This fixes width: 100% on <textarea> and class="input_full".
-				// It ensures that form elements don't go wider than container.
-				$('textarea, .input_full').wrap('<span class="input_full_wrap"></span>');
-			},
-			ie_skin_inputs: function() {
-				// Test for Internet Explorer 6.
-				if ((typeof document.addEventListener === 'function' && window.XMLHttpRequest) || !$(':input').length) {
-					return;
-				}
-
-				var type_regex = /date|datetime|datetime\-local|email|month|number|password|range|search|tel|text|time|url|week/;
-
-				$(':input').each(function() {
-					var el = $(this);
-
-					if (this.multiple && this.tagName.toLowerCase() === 'select') {
-						el.addClass('ie_multiple');
-					}
-					else if (this.type === 'button' || this.type === 'submit' || this.type === 'reset') {
-						el.addClass('ie_button');
-					}
-					else if (this.type.match(type_regex)) {
-						el.addClass('ie_text');
-					}
-				});
-			},
+		  uniform: function() {
+		    $("input:checkbox, input:radio, input:file").uniform();   
+		  },
 			dashboard: function() {
 				if (!$('div.equalize_1').length) {
 					return;
@@ -118,7 +90,7 @@ var APP = (function($, window, undefined) {
 				function enable_or_disable_form(el) {
 					var table = el.closest('table.grid');
 					var num_checked = table.find('input:checkbox:checked').length;
-					var this_form = el.closest('form')[0];
+					var this_form = $(el.closest('form')[0]);
 					var submit_button = this_form.find('input:submit');
 
 					if (!num_checked) {
@@ -149,6 +121,8 @@ var APP = (function($, window, undefined) {
 					else {
 						checkboxes.attr('checked', 'checked');
 					}
+					
+					$.uniform.update(checkboxes);
 
 					enable_or_disable_form(el);
 
@@ -188,41 +162,6 @@ var APP = (function($, window, undefined) {
 						}
 					}
 				});
-			},
-			placeholder: function() {
-				var placeholder_supported = 'placeholder' in document.createElement('input');
-
-				if (placeholder_supported || !$('*[placeholder]').length) {
-					return;
-				}
-
-				$('*[placeholder]').each(function() {
-					var el = $(this);
-					var text = el.attr('placeholder');
-
-					if (!el.val()) {
-						el.val(text).addClass('placeholder_text');
-					}
-
-					el.focus(function() {
-						if (el.val() === text) {
-							el.val('').removeClass('placeholder_text');;
-						}
-					}).blur(function() {
-						if (!el.val()) {
-							el.val(text).addClass('placeholder_text');;
-						}
-					});
-				});
-			},
-			autofocus: function() {
-				var autofocus_supported = 'autofocus' in document.createElement('input');
-
-				if (autofocus_supported || !$('*[autofocus]').length) {
-					return;
-				}
-
-				$('*[autofocus]:first').focus().select();
 			},
 			tooltip: function() {
 				// Does element exist?

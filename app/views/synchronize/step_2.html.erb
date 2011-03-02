@@ -6,16 +6,19 @@
         <table class="grid">
 			<thead>
             	<tr>
-	                <th class="shrink">
+	                <th class="shrink align_center">
 						<a href="#" class="check_all">All</a>
 					</th>
 	                <th>
 						Name
 					</th>
-	                <th>
+	                <th class="align_right">
 						Subscribers
 					</th>
-	                <th>
+					<th class="align_right">
+					    Campaigns
+					</th>
+	                <th class="align_right">
 						Created
 					</th>
 	            </tr>
@@ -23,16 +26,19 @@
 			<tbody>
 	            <% @lists.each do |list| %>
 	                <tr>
-	                    <td class="shrink">
+	                    <td class="shrink align_center">
 	                        <input type="checkbox" name="lists[]" value="<%= list['id'] %>" />
 	                    </td>
 	                    <td>
 	                        <%= list['name'] %>
 	                    </td>
-	                    <td>
-	                        <%= list['member_count'].to_i %>
+	                    <td class="align_right">
+	                        <%= list['member_count'] || "0" %>
 	                    </td>
-	                    <td>
+	                    <td class="align_right">
+	                        <%= list['campaign_count'] || "0" %>
+	                    </td>
+	                    <td class="align_right">
 	                        <%= DateTime.parse(list['date_created']).strftime("%d %b %Y") %>
 	                    </td>
 	                </tr>

@@ -39,7 +39,7 @@
             <%= render :partial => 'people', :locals => {:people => @people} %>
             <% unless @people.blank? %>
 				<p>
-					<%= submit_tag "Continue to choose lists &gt;&gt;" %>
+					<%= submit_tag raw("Continue to choose lists &gt;&gt;") %>
 				</p>
             <% end %>
         <% end %>
