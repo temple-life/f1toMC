@@ -42,7 +42,7 @@
 			</tr>
 		</thead>
 		<tbody>
-		    <% @list_members.each do |member| %>
+		    <% @list_members[:data].each do |member| %>
 		        <%= render :partial => "list_member", :locals => {:member => member} %>
 			<% end %>
 		</tbody>

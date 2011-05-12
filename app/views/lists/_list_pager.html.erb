@@ -14,15 +14,15 @@
 		<% end %>
 	</li>
 	<li>
-	    <% if @current_page * 20 >= @current_list['member_count'].to_i %>
+	    <% if @current_page * 20 >= @current_list['stats']['member_count'].to_i %>
 	        Next
 	    <% else %>
 		    <a href="?page=<%= @current_page + 1 %>">Next</a>
 		<% end %>
 	</li>
 	<li>
-	    <% if @current_list['member_count'].to_i / 20 > 1 %>
-	        <% last_page = (@current_list['member_count'].to_i / 20).floor %>
+	    <% if @current_list['stats']['member_count'].to_i / 20 > 1 %>
+	        <% last_page = (@current_list['stats']['member_count'].to_i / 20).floor %>
 	        <% if last_page == @current_page %>
 	            Last
 	        <% else %>
@@ -33,7 +33,7 @@
 		<% end %>
 	</li>
 	<li class="float_right">
-	    <%= "#{pluralize(@current_list['member_count'].to_i, 'Record')}" %>
+	    <%= "#{pluralize(@current_list['stats']['member_count'].to_i, 'Record')}" %>
 	</li>
 	<li class="float_right">
 	   <%= "Page #{@current_page}" %>

@@ -79,9 +79,9 @@ class SynchronizeController < ApplicationController
       subscribers.collect! { |s| {:EMAIL => s[:email], :EMAIL_TYPE => 'html', :FNAME => s[:first_name], :LNAME => s[:last_name], :F1ID => s[:id]} }
       
       lists.each do |list|
-        results = hominid.subscribe_many(list, subscribers, {:double_opt_in => false, :update_existing => true})
+        results = hominid.list_batch_subscribe(list, subscribers, {:double_opt_in => false, :update_existing => true})
 
-        if results['success_count'] == subscribers.length
+        if results['errors'].length == 0
           # all subscribes were successful, write the record to our db
           sync = Synchronize.find_or_initialize_by_mailchimp_list_id(list)
           if sync.new_record?
@@ -91,6 +91,8 @@ class SynchronizeController < ApplicationController
           end
           
           sync.save
+        else
+          # TODO: Need to handle
         end
       end
       

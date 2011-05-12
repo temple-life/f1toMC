@@ -10,12 +10,19 @@ class ListsController < ApplicationController
   def show
     @syncd_lists = find_syncd_lists
     @current_list = @syncd_lists.find { |list| list['id'] == params[:id] }
+    
+    logger.debug @current_list.to_yaml
+    
     @list_members = []
     @current_page = params[:page] ? params[:page].to_i : 1
-    members = @hominid.members(params[:id], "subscribed", @current_list['date_created'], @current_page - 1, 20)
-    members.each do |member|
-      @list_members << @hominid.member_info(params[:id], member['email'])
-    end
+    members = @hominid.list_members(params[:id], "subscribed", @current_list['date_created'], @current_page - 1, 20)
+    
+    info = @hominid.list_member_info(params[:id], members['data'].map{|member| member['email']})
+    
+    @list_members = {
+      :total_records => info['total'],
+      :data => info['data']
+    }
   end
   
   private
