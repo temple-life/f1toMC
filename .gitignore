@@ -10,6 +10,6 @@ db/schema.sql
 tmtags
 tags
 public/tmp/*
-
+app_config.yml
 
 _vti_cnf
