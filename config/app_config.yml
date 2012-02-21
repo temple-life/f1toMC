@@ -1,0 +1,17 @@
+development:
+  fellowshipone_people_realm: "/people/"
+  fellowshipone_api_url: "https://:church_code.fellowshiponeapi.com/v1/"
+  fellowshipone_api_key: ""
+  fellowshipone_api_secret: ""
+
+test:
+  fellowshipone_people_realm: "people/"
+  fellowshipone_api_url: "https://:church_code.staging.fellowshiponeapi.com/v1/"
+  fellowshipone_api_key: ""
+  fellowshipone_api_secret: ""
+
+production:
+  fellowshipone_people_realm: "people/"
+  fellowshipone_api_url: "https://:church_code.fellowshiponeapi.com/v1/"
+  fellowshipone_api_key: ""
+  fellowshipone_api_secret: ""
